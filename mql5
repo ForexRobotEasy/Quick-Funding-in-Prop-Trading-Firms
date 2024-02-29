@@ -1,0 +1,92 @@
+
+//+------------------------------------------------------------------+
+//|                      Quick Funding in Prop Trading Firms         |
+//|                Developer's Site: forexroboteasy.com               |
+//|               Development: Forex Robot Easy Team                  |
+//+------------------------------------------------------------------+
+
+// Define global variables
+double profitTarget = 100; // Profit target in pips
+double equityProtection = 1000; // Equity protection threshold in currency
+bool isTradingAllowed = true; // Flag to indicate if trading is allowed
+
+//+------------------------------------------------------------------+
+//|                        Initialization                            |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Initialize necessary components
+    // ...
+
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//|                        Deinitialization                          |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Deinitialize necessary components
+    // ...
+}
+
+//+------------------------------------------------------------------+
+//|                          Start Trading                           |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Check if trading is allowed
+    if(!isTradingAllowed)
+        return;
+
+    // Check if profit target is met
+    if(GetProfit() >= profitTarget)
+    {
+        // Halt the EA
+        isTradingAllowed = false;
+        Print('Profit target achieved. Trading halted.');
+        return;
+    }
+
+    // Check if equity protection threshold is met
+    if(AccountEquity() <= equityProtection)
+    {
+        // Halt the EA
+        isTradingAllowed = false;
+        Print('Equity protection threshold reached. Trading halted.');
+        return;
+    }
+
+    // Analyze market conditions and identify trading opportunities
+    // ...
+
+    // Execute trades based on identified opportunities
+    // ...
+
+    // Manage stop loss and take profit levels
+    // ...
+
+    // Monitor account equity
+    // ...
+}
+
+//+------------------------------------------------------------------+
+//|                     Helper Functions                              |
+//+------------------------------------------------------------------+
+double GetProfit()
+{
+    // Calculate current profit
+    double profit = 0;
+    // ...
+
+    return profit;
+}
+
+double AccountEquity()
+{
+    // Calculate current account equity
+    double equity = 0;
+    // ...
+
+    return equity;
+}
